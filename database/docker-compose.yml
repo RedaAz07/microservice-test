@@ -1,0 +1,32 @@
+services:
+  # -------------------------------------------------------------
+  # USER MONGODB
+  # -------------------------------------------------------------
+  user-db:
+    image: mongo:7.0
+    container_name: mongodb_user
+    restart: always
+    env_file:
+      - ../user/.env
+    ports:
+      - "27017:27017"
+    volumes:
+      - user_mongodb_data:/data/db
+
+  # -------------------------------------------------------------
+  # PRODUCT MONGODB
+  # -------------------------------------------------------------
+  product-db:
+    image: mongo:7.0
+    container_name: mongodb_product
+    restart: always
+    env_file:
+      - ../product/.env
+    ports:
+      - "27018:27017" # Exposed locally on 27018
+    volumes:
+      - product_mongodb_data:/data/db
+
+volumes:
+  user_mongodb_data:
+  product_mongodb_data:

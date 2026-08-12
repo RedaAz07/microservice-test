@@ -1,6 +1,5 @@
 package com.user.controller;
 
-import java.security.Principal;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,12 +15,10 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.user.Service.UserService;
 import com.user.dto.requestdto.EditUserRequestDto;
-import com.user.dto.requestdto.RegisterRequestDTO;
 import com.user.dto.responsedto.UserResponseDto;
 
 import jakarta.validation.Valid;
 
-import org.springframework.web.bind.annotation.RequestParam;
 
 @RestController
 @RequestMapping("/api/users")

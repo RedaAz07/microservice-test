@@ -1,3 +1,18 @@
 spring:
-  application:
-    name: user
+  config:
+    import: optional:file:./.env[.properties]
+
+  data:
+    mongodb:
+      host: localhost
+      port: 27017
+      database: ${MONGO_INITDB_DATABASE}
+      username: ${MONGO_INITDB_ROOT_USERNAME}
+      password: ${MONGO_INITDB_ROOT_PASSWORD}
+      authentication-database: admin
+
+application:
+  security:
+    jwt:
+      secret-key: ${JWT_SECRET}
+      expiration: ${JWT_EXPIRATION}

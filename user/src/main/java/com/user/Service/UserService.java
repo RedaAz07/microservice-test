@@ -17,7 +17,6 @@ import com.user.dto.requestdto.LoginRequestDTO;
 import com.user.dto.requestdto.RegisterRequestDTO;
 import com.user.dto.responsedto.AuthResponseDto;
 import com.user.dto.responsedto.UserResponseDto;
-import com.user.entity.Product;
 import com.user.entity.User;
 import com.user.exceptions.ApiException;
 import com.user.mapper.UserMapper;

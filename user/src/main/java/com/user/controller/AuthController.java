@@ -1,6 +1,5 @@
 package com.user.controller;
 
-import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -13,11 +12,9 @@ import com.user.Service.UserService;
 import com.user.dto.requestdto.LoginRequestDTO;
 import com.user.dto.requestdto.RegisterRequestDTO;
 import com.user.dto.responsedto.AuthResponseDto;
-import com.user.dto.responsedto.UserResponseDto;
 
 import jakarta.validation.Valid;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+
 
 
 @RestController
