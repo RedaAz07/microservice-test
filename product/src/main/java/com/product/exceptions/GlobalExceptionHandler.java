@@ -1,4 +1,4 @@
-package com.lets_plat.exceptions;
+package com.product.exceptions;
 
 import java.time.LocalDateTime;
 import java.util.HashMap;

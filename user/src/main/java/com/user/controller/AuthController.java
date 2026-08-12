@@ -1,4 +1,4 @@
-package com.lets_plat.controller;
+package com.user.controller;
 
 import java.util.List;
 
@@ -9,11 +9,11 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.lets_plat.Service.UserService;
-import com.lets_plat.dto.requestdto.LoginRequestDTO;
-import com.lets_plat.dto.requestdto.RegisterRequestDTO;
-import com.lets_plat.dto.responsedto.AuthResponseDto;
-import com.lets_plat.dto.responsedto.UserResponseDto;
+import com.user.Service.UserService;
+import com.user.dto.requestdto.LoginRequestDTO;
+import com.user.dto.requestdto.RegisterRequestDTO;
+import com.user.dto.responsedto.AuthResponseDto;
+import com.user.dto.responsedto.UserResponseDto;
 
 import jakarta.validation.Valid;
 import org.springframework.web.bind.annotation.GetMapping;

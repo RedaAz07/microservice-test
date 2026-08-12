@@ -1,19 +1,19 @@
-package com.lets_plat.Service;
+package com.product.Service;
 
 import java.util.List;
 import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.lets_plat.dto.requestdto.EditProductDto;
-import com.lets_plat.dto.requestdto.ProductRequestDto;
-import com.lets_plat.dto.responsedto.ProductResponseDto;
-import com.lets_plat.entity.Product;
-import com.lets_plat.entity.User;
-import com.lets_plat.exceptions.ApiException;
-import com.lets_plat.mapper.ProductMapper;
-import com.lets_plat.repository.ProductRepository;
-import com.lets_plat.repository.UserRepository;
+import com.product.dto.requestdto.EditProductDto;
+import com.product.dto.requestdto.ProductRequestDto;
+import com.product.dto.responsedto.ProductResponseDto;
+import com.product.entity.Product;
+import com.product.entity.User;
+import com.product.exceptions.ApiException;
+import com.product.mapper.ProductMapper;
+import com.product.repository.ProductRepository;
+import com.product.repository.UserRepository;
 
 @Service
 public class ProductService {

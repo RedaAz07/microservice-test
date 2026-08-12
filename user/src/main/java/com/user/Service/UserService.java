@@ -1,4 +1,4 @@
-package com.lets_plat.Service;
+package com.user.Service;
 
 import java.util.List;
 import java.util.stream.Collector;
@@ -12,20 +12,18 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import com.lets_plat.dto.requestdto.EditUserRequestDto;
-import com.lets_plat.dto.requestdto.LoginRequestDTO;
-import com.lets_plat.dto.requestdto.ProductRequestDto;
-import com.lets_plat.dto.requestdto.RegisterRequestDTO;
-import com.lets_plat.dto.responsedto.AuthResponseDto;
-import com.lets_plat.dto.responsedto.ProductResponseDto;
-import com.lets_plat.dto.responsedto.UserResponseDto;
-import com.lets_plat.entity.Product;
-import com.lets_plat.entity.User;
-import com.lets_plat.exceptions.ApiException;
-import com.lets_plat.mapper.UserMapper;
-import com.lets_plat.repository.UserRepository;
-import com.lets_plat.security.CostumeUserDetails;
-import com.lets_plat.security.JwtUtil;
+import com.user.dto.requestdto.EditUserRequestDto;
+import com.user.dto.requestdto.LoginRequestDTO;
+import com.user.dto.requestdto.RegisterRequestDTO;
+import com.user.dto.responsedto.AuthResponseDto;
+import com.user.dto.responsedto.UserResponseDto;
+import com.user.entity.Product;
+import com.user.entity.User;
+import com.user.exceptions.ApiException;
+import com.user.mapper.UserMapper;
+import com.user.repository.UserRepository;
+import com.user.security.CostumeUserDetails;
+import com.user.security.JwtUtil;
 
 @Service
 public class UserService {

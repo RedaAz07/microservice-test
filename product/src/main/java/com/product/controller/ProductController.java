@@ -1,13 +1,12 @@
-package com.lets_plat.controller;
+package com.product.controller;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.lets_plat.Service.ProductService;
-import com.lets_plat.dto.requestdto.EditProductDto;
-import com.lets_plat.dto.requestdto.ProductRequestDto;
-import com.lets_plat.dto.responsedto.ProductResponseDto;
-import com.lets_plat.utils.RateLimited;
+import com.product.Service.ProductService;
+import com.product.dto.requestdto.EditProductDto;
+import com.product.dto.requestdto.ProductRequestDto;
+import com.product.dto.responsedto.ProductResponseDto;
 
 import jakarta.validation.Valid;
 
@@ -16,7 +15,6 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.access.prepost.PostAuthorize;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -31,14 +29,12 @@ public class ProductController {
     @Autowired
     private ProductService productService;
 
-    @RateLimited
     @GetMapping()
     public ResponseEntity<List<ProductResponseDto>> getProducts() {
         List<ProductResponseDto> product = productService.getProducts();
         return ResponseEntity.ok(product);
     }
 
-    @PostAuthorize("returnObject.body.ownerName == authentication.name")
     @PostMapping()
     public ResponseEntity<ProductResponseDto> createProduct(@RequestBody @Valid ProductRequestDto request,
             Principal principal) {

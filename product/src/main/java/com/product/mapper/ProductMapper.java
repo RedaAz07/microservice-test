@@ -1,9 +1,9 @@
-package com.lets_plat.mapper;
+package com.product.mapper;
 
 import org.springframework.stereotype.Component;
 
-import com.lets_plat.dto.responsedto.ProductResponseDto;
-import com.lets_plat.entity.Product;
+import com.product.dto.responsedto.ProductResponseDto;
+import com.product.entity.Product;
 
 @Component
 public class ProductMapper {

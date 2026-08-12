@@ -1,4 +1,4 @@
-package com.lets_plat.entity;
+package com.product.entity;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;

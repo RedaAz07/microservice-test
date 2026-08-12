@@ -1,10 +1,9 @@
-package com.lets_plat.exceptions;
+package com.user.exceptions;
 
 import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.converter.HttpMessageNotReadableException;
@@ -77,10 +76,10 @@ public class GlobalExceptionHandler {
     // ────────────────────────────────────────────────────────
     // 3. 409 CONFLICT (Duplicate usernames, emails, etc.)
     // ────────────────────────────────────────────────────────
-    @ExceptionHandler(DataIntegrityViolationException.class)
-    public ResponseEntity<Object> handleDataConflict(DataIntegrityViolationException ex) {
-        return buildErrorResponse(HttpStatus.CONFLICT, "Database conflict: Duplicate entry or foreign key violation.");
-    }
+    // @ExceptionHandler(DataIntegrityViolationException.class)
+    // public ResponseEntity<Object> handleDataConflict(DataIntegrityViolationException ex) {
+    //     return buildErrorResponse(HttpStatus.CONFLICT, "Database conflict: Duplicate entry or foreign key violation.");
+    // }
 
     // ────────────────────────────────────────────────────────
     // 4. 401 UNAUTHORIZED (Wrong password / Bad JWT)

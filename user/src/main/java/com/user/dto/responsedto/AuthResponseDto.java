@@ -1,4 +1,4 @@
-package com.lets_plat.dto.responsedto;
+package com.user.dto.responsedto;
 
 public record AuthResponseDto(String jwt) {
 

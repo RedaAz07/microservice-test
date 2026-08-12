@@ -1,12 +1,12 @@
-package com.lets_plat.config;
+package com.user.config;
 
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
-import com.lets_plat.entity.User;
-import com.lets_plat.repository.UserRepository;
+import com.user.entity.User;
+import com.user.repository.UserRepository;
 
 @Configuration
 public class AdminSeeder {

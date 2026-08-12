@@ -1,4 +1,4 @@
-package com.lets_plat.dto.requestdto;
+package com.user.dto.requestdto;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;

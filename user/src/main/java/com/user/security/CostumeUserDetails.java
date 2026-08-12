@@ -1,4 +1,4 @@
-package com.lets_plat.security;
+package com.user.security;
 
 import java.util.Collections;
 
@@ -8,8 +8,8 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
-import com.lets_plat.entity.User;
-import com.lets_plat.repository.UserRepository;
+import com.user.entity.User;
+import com.user.repository.UserRepository;
 
 @Service
 public class CostumeUserDetails implements org.springframework.security.core.userdetails.UserDetailsService {

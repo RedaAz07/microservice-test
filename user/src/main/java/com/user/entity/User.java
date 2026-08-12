@@ -1,4 +1,4 @@
-package com.lets_plat.entity;
+package com.user.entity;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.index.Indexed;

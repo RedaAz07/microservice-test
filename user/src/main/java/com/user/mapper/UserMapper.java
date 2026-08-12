@@ -1,10 +1,10 @@
-package com.lets_plat.mapper;
+package com.user.mapper;
 
 import org.springframework.stereotype.Component;
 
-import com.lets_plat.dto.responsedto.AuthResponseDto;
-import com.lets_plat.dto.responsedto.UserResponseDto;
-import com.lets_plat.entity.User;
+import com.user.dto.responsedto.AuthResponseDto;
+import com.user.dto.responsedto.UserResponseDto;
+import com.user.entity.User;
 
 @Component
 public class UserMapper {

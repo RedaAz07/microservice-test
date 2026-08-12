@@ -1,4 +1,4 @@
-package com.lets_plat.controller;
+package com.user.controller;
 
 import java.security.Principal;
 import java.util.List;
@@ -14,13 +14,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.lets_plat.Service.UserService;
-import com.lets_plat.dto.requestdto.EditUserRequestDto;
-import com.lets_plat.dto.requestdto.ProductRequestDto;
-import com.lets_plat.dto.requestdto.RegisterRequestDTO;
-import com.lets_plat.dto.responsedto.ProductResponseDto;
-import com.lets_plat.dto.responsedto.UserResponseDto;
-import com.lets_plat.utils.RateLimited;
+import com.user.Service.UserService;
+import com.user.dto.requestdto.EditUserRequestDto;
+import com.user.dto.requestdto.RegisterRequestDTO;
+import com.user.dto.responsedto.UserResponseDto;
 
 import jakarta.validation.Valid;
 
@@ -33,7 +30,6 @@ public class UserController {
 
     @Autowired
     private UserService userService;
-@RateLimited
     @GetMapping()
     public ResponseEntity<List<UserResponseDto>> getUsers() {
         List<UserResponseDto> users = userService.getUsers();

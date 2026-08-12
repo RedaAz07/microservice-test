@@ -1,4 +1,4 @@
-package com.lets_plat.security;
+package com.user.security;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
