@@ -9,11 +9,9 @@ import com.product.dto.requestdto.EditProductDto;
 import com.product.dto.requestdto.ProductRequestDto;
 import com.product.dto.responsedto.ProductResponseDto;
 import com.product.entity.Product;
-import com.product.entity.User;
 import com.product.exceptions.ApiException;
 import com.product.mapper.ProductMapper;
 import com.product.repository.ProductRepository;
-import com.product.repository.UserRepository;
 
 @Service
 public class ProductService {
@@ -22,8 +20,7 @@ public class ProductService {
     private ProductRepository productRepository;
     @Autowired
     private ProductMapper productMapper;
-    @Autowired
-    private UserRepository userRepository;
+  
 
     public List<ProductResponseDto> getProducts() {
         return productRepository.findAll().stream().map(p -> productMapper.productToDto(p))
