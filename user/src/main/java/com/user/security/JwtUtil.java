@@ -5,8 +5,10 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.function.Function;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
@@ -23,42 +25,18 @@ public class JwtUtil {
     @Value("${application.security.jwt.expiration}")
     private long jwtExpiration;
 
-    public String extractUsername(String token) {
-
-        return extractClaim(token, Claims::getSubject);
-    }
-
-    public <T> T extractClaim(String token, Function<Claims, T> calimResolve) {
-        final Claims claims = extractAllClaims(token);
-        return calimResolve.apply(claims);
-    }
-
-    public Claims extractAllClaims(String token) {
-        return Jwts.parserBuilder().setSigningKey(getSigningkey()).build().parseClaimsJws(token).getBody();
-    }
-
     public Key getSigningkey() {
         byte[] keyBytes = Decoders.BASE64.decode(secretKey);
         return Keys.hmacShaKeyFor(keyBytes);
     }
 
-    public boolean isTokenValide(String jwt, UserDetails userDetails) {
-        final String username = extractUsername(jwt);
-        return (username.equals(userDetails.getUsername()) && !isTokenExpired(jwt));
-    }
-
-    public boolean isTokenExpired(String token) {
-
-        return extractExpiration(token).before(new Date());
-    }
-
-    public Date extractExpiration(String Token) {
-
-        return extractClaim(Token, Claims::getExpiration);
-    }
-
     public String generateToken(UserDetails userdetails) {
-        return createToken(new HashMap<>(), userdetails.getUsername());
+        Map<String, Object> claims = new HashMap<>();
+        claims.put("roles", userdetails.getAuthorities().stream()
+                .map(GrantedAuthority::getAuthority)
+                .collect(Collectors.toList()));
+
+        return createToken(claims, userdetails.getUsername());
     }
 
     public String createToken(Map<String, Object> extractClaims, String username) {
