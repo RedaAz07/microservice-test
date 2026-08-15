@@ -79,6 +79,11 @@ public class UserService {
         User user = userRepository.findById(id).orElseThrow(() -> ApiException.notFound("User Not Found"));
         return userMapper.userToDto(user);
     }
+     public UserResponseDto getUserByUsername(String username) {
+        User user = userRepository.findByName(username).orElseThrow(() -> ApiException.notFound("User Not Found"));
+        return userMapper.userToDto(user);
+    }
+
 
     public UserResponseDto editUser(EditUserRequestDto request, String id) {
         User user = userRepository.findById(id).orElseThrow(() -> ApiException.notFound("User Not Found"));

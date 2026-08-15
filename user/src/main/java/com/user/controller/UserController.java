@@ -19,23 +19,28 @@ import com.user.dto.responsedto.UserResponseDto;
 
 import jakarta.validation.Valid;
 
-
 @RestController
 @RequestMapping("/api/users")
-@PreAuthorize("hasRole('ADMIN')")
 public class UserController {
 
     @Autowired
     private UserService userService;
+
     @GetMapping()
     public ResponseEntity<List<UserResponseDto>> getUsers() {
         List<UserResponseDto> users = userService.getUsers();
         return ResponseEntity.ok(users);
     }
 
-    @GetMapping("/{id}")
-    public ResponseEntity<UserResponseDto> getuser(@PathVariable String id) {
-        UserResponseDto user = userService.getUser(id);
+    // @GetMapping("/{id}")
+    // public ResponseEntity<UserResponseDto> getuser(@PathVariable String id) {
+    //     UserResponseDto user = userService.getUser(id);
+    //     return ResponseEntity.ok(user);
+    // }
+
+    @GetMapping("/{username}")
+    public ResponseEntity<UserResponseDto> getUserByUsername(@PathVariable String username) {
+        UserResponseDto user = userService.getUserByUsername(username);
         return ResponseEntity.ok(user);
     }
 

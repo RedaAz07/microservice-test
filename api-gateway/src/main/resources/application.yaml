@@ -35,3 +35,14 @@ application:
   security:
     jwt:
       secret-key: 404E635266556A586E3272357538782F413F4428472B4B6250645367566B5970
+
+logging:
+  level:
+    org.springframework.cloud.gateway: TRACE
+
+    # Reactive web request handling
+    org.springframework.web.reactive: DEBUG
+    org.springframework.http.server.reactive: DEBUG
+
+    # Outbound HTTP calls made by Netty to microservices
+    reactor.netty: DEBUG

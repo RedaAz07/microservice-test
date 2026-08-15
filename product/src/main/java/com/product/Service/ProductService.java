@@ -7,9 +7,11 @@ import org.springframework.stereotype.Service;
 
 import com.product.dto.requestdto.EditProductDto;
 import com.product.dto.requestdto.ProductRequestDto;
+import com.product.dto.requestdto.userDto;
 import com.product.dto.responsedto.ProductResponseDto;
 import com.product.entity.Product;
 import com.product.exceptions.ApiException;
+import com.product.feing.UserClientInterface;
 import com.product.mapper.ProductMapper;
 import com.product.repository.ProductRepository;
 
@@ -20,7 +22,8 @@ public class ProductService {
     private ProductRepository productRepository;
     @Autowired
     private ProductMapper productMapper;
-  
+    @Autowired
+    private UserClientInterface userClientInterface;
 
     public List<ProductResponseDto> getProducts() {
         return productRepository.findAll().stream().map(p -> productMapper.productToDto(p))
@@ -28,12 +31,18 @@ public class ProductService {
     }
 
     public ProductResponseDto createProduct(ProductRequestDto request, String username) {
-        User user = userRepository.findByName(username).orElseThrow(() -> ApiException.notFound("User Not Found"));
+
+        userDto user = userClientInterface.getUserByUsername(username);
+        if (user == null) {
+            throw ApiException.notFound("User not found ");
+
+        }
+
         Product p = new Product();
         p.setDescription(request.description());
         p.setName(request.name());
         p.setPrice(request.price());
-        p.setUserID(user.getId());
+        p.setUserID(user.id());
         p.setOwnerName(username);
         Product savedP = productRepository.save(p);
         return productMapper.productToDto(savedP);
@@ -41,10 +50,14 @@ public class ProductService {
     }
 
     public ProductResponseDto editProduct(EditProductDto request, String username, String id) {
-        User user = userRepository.findByName(username).orElseThrow(() -> ApiException.notFound("User Not Found"));
+        userDto user = userClientInterface.getUserByUsername(username);
+        if (user == null) {
+            throw ApiException.notFound("User not found ");
+
+        }
         Product product = productRepository.findById(id).orElseThrow(() -> ApiException.notFound("Product Not Found"));
 
-        if (!product.getUserID().equals(user.getId()) && !user.getRole().equals("ROLE_ADMIN")) {
+        if (!product.getUserID().equals(user.id()) && !user.role().equals("ROLE_ADMIN")) {
             throw ApiException.forbidden("The Product is not yours ");
         }
         if (request.name() != null) {
@@ -64,10 +77,14 @@ public class ProductService {
     }
 
     public String deleteProduct(String username, String id) {
-        User user = userRepository.findByName(username).orElseThrow(() -> ApiException.notFound("User Not Found"));
+        userDto user = userClientInterface.getUserByUsername(username);
+        if (user == null) {
+            throw ApiException.notFound("User not found ");
+
+        }
         Product product = productRepository.findById(id).orElseThrow(() -> ApiException.notFound("Product Not Found"));
 
-        if (!product.getUserID().equals(user.getId()) && !user.getRole().equals("ROLE_ADMIN")) {
+        if (!product.getUserID().equals(user.id()) && !user.role().equals("ROLE_ADMIN")) {
             throw ApiException.forbidden("The Product is not yours ");
         }
 

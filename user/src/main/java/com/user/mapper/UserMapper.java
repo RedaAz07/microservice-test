@@ -20,7 +20,7 @@ public class UserMapper {
         if (user == null) {
             return null;
         }
-        return new UserResponseDto(user.getName(), user.getEmail(), user.getId());
+        return new UserResponseDto(user.getName(), user.getEmail(), user.getId(), user.getRole());
 
     }
 
